@@ -1,0 +1,26 @@
+import urllib.request, urllib.parse, urllib.error
+import urllib.request as ur
+from bs4 import BeautifulSoup
+import json
+import ssl
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = input('Enter:')
+print("Retrieving:",url)
+data = ur.urlopen(url).read().decode('utf-8')
+print("Retrieved",len(data),"characters")
+obj = json.loads(data)
+
+sum = 0
+total = 0
+#extracting from comment tag
+for no in obj["comments"]:
+    #extracting from count tag
+    sum += int(no["count"])
+    total += 1
+
+print('count:',no)
+print('sum',sum)

@@ -1,0 +1,12 @@
+import re
+fi = open('regex_sum_931434.txt')
+x = list()
+s = 0
+for line in fi:
+    y = re.findall('[0-9]+',line)
+    #print(y)
+    x = x+y
+#print(x)
+for no in x:
+    s = s + int(no)
+print(s)
